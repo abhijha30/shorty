@@ -6,12 +6,10 @@ function generateLink() {
     return;
   }
 
-  const code = Math.random().toString(36).substring(2, 8);
   const baseDomain = "https://shorty-six-iota.vercel.app";
-  const shortUrl = `${baseDomain}/${code}`;
+  const encodedUrl = encodeURIComponent(longUrl);
 
-  // store mapping
-  localStorage.setItem(code, longUrl);
+  const shortUrl = `${baseDomain}/?u=${encodedUrl}`;
 
   const shortUrlElement = document.getElementById("shortUrl");
   shortUrlElement.href = shortUrl;
