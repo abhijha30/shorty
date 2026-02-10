@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shorty | Link Shortener & QR Generator</title>
+  <title>Shorty | Link Shortener</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <header>
     <h1>Shorty</h1>
-    <p>Shorten links. Generate QR. Share smarter.</p>
+    <p>Simple. Fast. Link Shortener.</p>
   </header>
 
   <main class="container">
@@ -21,21 +21,16 @@
       required
     />
 
-    <button onclick="generateLink()">Generate</button>
+    <button onclick="generateLink()">Shorten Link</button>
 
     <div id="output" class="hidden">
-      <p><strong>Short URL:</strong></p>
+      <p><strong>Your Short Link:</strong></p>
       <a id="shortUrl" target="_blank"></a>
-
-      <div class="qr-box">
-        <img id="qrImage" alt="Shorty QR Code" />
-        <a id="downloadQR" download="shorty-qr.png">Download QR</a>
-      </div>
     </div>
   </main>
 
   <footer>
-    <p>© 2026 Shorty • Built for Vercel</p>
+    <p>© 2026 Shorty • Deployed on Vercel</p>
   </footer>
 
   <script src="script.js"></script>
