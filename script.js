@@ -1,5 +1,5 @@
 async function generateLink() {
-  const longUrl = document.getElementById("longUrl").value;
+  const longUrl = document.getElementById("longUrl").value.trim();
   const output = document.getElementById("output");
   const shortUrlEl = document.getElementById("shortUrl");
 
@@ -10,19 +10,20 @@ async function generateLink() {
 
   try {
     const response = await fetch(
-      `https://api.shrtco.de/v2/shorten?url=${longUrl}`
+      `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`
     );
 
-    const data = await response.json();
+    const shortUrl = await response.text();
 
-    if (data.ok) {
-      shortUrlEl.href = data.result.full_short_link;
-      shortUrlEl.textContent = data.result.full_short_link;
+    if (shortUrl.startsWith("http")) {
+      shortUrlEl.href = shortUrl;
+      shortUrlEl.textContent = shortUrl;
       output.classList.remove("hidden");
     } else {
-      alert("Failed to shorten URL");
+      throw new Error("Invalid response");
     }
   } catch (error) {
-    alert("Something went wrong");
+    alert("Failed to shorten link. Please try again.");
+    console.error(error);
   }
 }
