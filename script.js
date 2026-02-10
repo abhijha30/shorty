@@ -6,18 +6,30 @@ function generateLink() {
     return;
   }
 
+  // generate random short code
   const randomCode = Math.random().toString(36).substring(2, 8);
-  const shortUrl = `https://shorty/${randomCode}`;
 
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(
-    shortUrl
-  )}`;
+  // ✅ USE REAL DOMAIN (VERY IMPORTANT)
+  const baseDomain = "https://shorty-six-iota.vercel.app";
+  const shortUrl = `${baseDomain}/${randomCode}`;
 
-  document.getElementById("shortUrl").href = shortUrl;
-  document.getElementById("shortUrl").innerText = shortUrl;
+  // QR code API
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(shortUrl)}`;
 
-  document.getElementById("qrImage").src = qrUrl;
-  document.getElementById("downloadQR").href = qrUrl;
+  // show short URL
+  const shortUrlElement = document.getElementById("shortUrl");
+  shortUrlElement.href = shortUrl;
+  shortUrlElement.innerText = shortUrl;
 
+  // show QR
+  const qrImage = document.getElementById("qrImage");
+  qrImage.src = qrUrl;
+
+  // download QR
+  const downloadQR = document.getElementById("downloadQR");
+  downloadQR.href = qrUrl;
+  downloadQR.download = "shorty-qr.png";
+
+  // reveal output
   document.getElementById("output").classList.remove("hidden");
 }
