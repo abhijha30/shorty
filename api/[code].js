@@ -8,7 +8,7 @@ export default function handler(req) {
       if (url) {
         window.location.href = url;
       } else {
-        document.body.innerHTML = "<h2>Short link not found</h2>";
+        document.body.innerHTML = "<h2>Link not found</h2>";
       }
     </script>
     `,
