@@ -6,14 +6,18 @@ function generateLink() {
     return;
   }
 
-  const baseDomain = "https://shorty-six-iota.vercel.app";
-  const encodedUrl = encodeURIComponent(longUrl);
+  const randomCode = Math.random().toString(36).substring(2, 8);
+  const shortUrl = `https://shorty/${randomCode}`;
 
-  const shortUrl = `${baseDomain}/?u=${encodedUrl}`;
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(
+    shortUrl
+  )}`;
 
-  const shortUrlElement = document.getElementById("shortUrl");
-  shortUrlElement.href = shortUrl;
-  shortUrlElement.innerText = shortUrl;
+  document.getElementById("shortUrl").href = shortUrl;
+  document.getElementById("shortUrl").innerText = shortUrl;
+
+  document.getElementById("qrImage").src = qrUrl;
+  document.getElementById("downloadQR").href = qrUrl;
 
   document.getElementById("output").classList.remove("hidden");
 }
