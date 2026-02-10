@@ -1,23 +1,28 @@
-function generateLink() {
+async function generateLink() {
   const longUrl = document.getElementById("longUrl").value;
+  const output = document.getElementById("output");
+  const shortUrlEl = document.getElementById("shortUrl");
 
   if (!longUrl) {
     alert("Please enter a valid URL");
     return;
   }
 
-  const randomCode = Math.random().toString(36).substring(2, 8);
-  const shortUrl = `https://shorty/${randomCode}`;
+  try {
+    const response = await fetch(
+      `https://api.shrtco.de/v2/shorten?url=${longUrl}`
+    );
 
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(
-    shortUrl
-  )}`;
+    const data = await response.json();
 
-  document.getElementById("shortUrl").href = shortUrl;
-  document.getElementById("shortUrl").innerText = shortUrl;
-
-  document.getElementById("qrImage").src = qrUrl;
-  document.getElementById("downloadQR").href = qrUrl;
-
-  document.getElementById("output").classList.remove("hidden");
+    if (data.ok) {
+      shortUrlEl.href = data.result.full_short_link;
+      shortUrlEl.textContent = data.result.full_short_link;
+      output.classList.remove("hidden");
+    } else {
+      alert("Failed to shorten URL");
+    }
+  } catch (error) {
+    alert("Something went wrong");
+  }
 }
