@@ -1,3 +1,10 @@
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const target = params.get("u");
+  if (target) {
+    window.location.href = target;
+  }
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
