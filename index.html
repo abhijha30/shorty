@@ -1,23 +1,16 @@
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const target = params.get("u");
-  if (target) {
-    window.location.href = target;
-  }
-</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shorty | Link Shortener</title>
+  <title>Shorty | Link Shortener & QR Generator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <header>
     <h1>Shorty</h1>
-    <p>Simple. Fast. Link Shortener.</p>
+    <p>Shorten links. Generate QR. Share smarter.</p>
   </header>
 
   <main class="container">
@@ -28,16 +21,21 @@
       required
     />
 
-    <button onclick="generateLink()">Shorten Link</button>
+    <button onclick="generateLink()">Generate</button>
 
     <div id="output" class="hidden">
-      <p><strong>Your Short Link:</strong></p>
+      <p><strong>Short URL:</strong></p>
       <a id="shortUrl" target="_blank"></a>
+
+      <div class="qr-box">
+        <img id="qrImage" alt="Shorty QR Code" />
+        <a id="downloadQR" download="shorty-qr.png">Download QR</a>
+      </div>
     </div>
   </main>
 
   <footer>
-    <p>© 2026 Shorty • Deployed on Vercel</p>
+    <p>© 2026 Shorty • Built for Vercel</p>
   </footer>
 
   <script src="script.js"></script>
