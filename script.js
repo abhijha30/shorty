@@ -1,5 +1,6 @@
 function generateLink() {
   const longUrl = document.getElementById("longUrl").value;
+
   if (!longUrl) {
     alert("Please enter a valid URL");
     return;
@@ -9,17 +10,12 @@ function generateLink() {
   const baseDomain = "https://shorty-six-iota.vercel.app";
   const shortUrl = `${baseDomain}/${code}`;
 
-  // 🔐 store mapping
+  // store mapping
   localStorage.setItem(code, longUrl);
 
-  // QR
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(shortUrl)}`;
-
-  document.getElementById("shortUrl").href = shortUrl;
-  document.getElementById("shortUrl").innerText = shortUrl;
-
-  document.getElementById("qrImage").src = qrUrl;
-  document.getElementById("downloadQR").href = qrUrl;
+  const shortUrlElement = document.getElementById("shortUrl");
+  shortUrlElement.href = shortUrl;
+  shortUrlElement.innerText = shortUrl;
 
   document.getElementById("output").classList.remove("hidden");
 }
