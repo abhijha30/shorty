@@ -1,31 +1,31 @@
-# Shorty 🔗
+# Shorty 🔗📱
 
-Shorty is a simple link shortener built using HTML, CSS, and JavaScript,
-deployed on Vercel with dynamic routing.
+**Shorty** is a simple and responsive link shortener with QR code generation, built for seamless deployment on Vercel.
 
 ## ✨ Features
 - Paste long URL → get short link
-- Real redirection (no 404)
-- Mobile & desktop responsive
-- No backend server
-- Lightweight & fast
+- Auto QR code generation
+- Download QR code
+- Mobile & desktop friendly
+- No backend required
+- Zero deployment errors
 
 ## 🛠 Tech Stack
 - HTML
 - CSS
 - JavaScript
-- Vercel Edge Functions
+- QR Code API (qrserver.com)
 
-## 🚀 Deployment
-1. Push project to GitHub
+## 🚀 Deployment (Vercel)
+1. Push this project to GitHub
 2. Import repository in Vercel
-3. Framework: Other
-4. Deploy
+3. Select framework as **Other**
+4. Deploy 🎉
 
-## 🎓 Use Case
+## 📌 Project Use
 - Final year project
-- Portfolio
+- Portfolio project
 - Interview demo
 
 ---
-Built with ❤️ using Shorty
+Built with ❤️ — Shorty
